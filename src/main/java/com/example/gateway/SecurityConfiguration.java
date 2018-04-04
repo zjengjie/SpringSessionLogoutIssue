@@ -25,12 +25,10 @@ public class SecurityConfiguration {
     @Bean
     public SecurityWebFilterChain securitygWebFilterChain(ServerHttpSecurity http) {
         // @formatter:off
-        return http.httpBasic().and()
-                .authorizeExchange()
-                    .pathMatchers("/login/**").permitAll()
+        return http.authorizeExchange()
                 .anyExchange().authenticated()
                 .and().formLogin()
-                .and().logout().and()
+                .and()
                 .build();
         // @formatter:on
     }
